@@ -1,7 +1,7 @@
 name: Check versions
 on:
   issues:
-    types: [created]
+    types: [opened]
 
 jobs:
   check-versions:
