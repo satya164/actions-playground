@@ -10,7 +10,7 @@ jobs:
       - uses: react-navigation/check-versions-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          packages:
-            - '@react-navigation/native'
-            - '@react-navigation/stack'
+          packages: |
+            @react-navigation/native
+            @react-navigation/stack
           missing-versions-label: 'needs more info'
