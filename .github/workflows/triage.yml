@@ -7,11 +7,8 @@ jobs:
   check-versions:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/github@v1.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: react-navigation/check-versions-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           packages: '@react-navigation/native, @react-navigation/stack'
-          label: needs more info
+          label: 'needs more info'
