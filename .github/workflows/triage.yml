@@ -13,5 +13,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          packages: @react-navigation/native, @react-navigation/stack
+          packages: '@react-navigation/native, @react-navigation/stack'
           label: needs more info
