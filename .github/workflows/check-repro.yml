@@ -15,6 +15,8 @@ jobs:
           script: |
             const body = context.payload.issue.body || context.payload.comment.body
 
+            console.log(context.payload)
+
             if (!/https?:\/\/((github\.com\/[^/]+\/[^/]+)|(snack\.expo\.io\/.+))/gm.test(body)) {
               return
             }
