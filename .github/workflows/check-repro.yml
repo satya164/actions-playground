@@ -1,0 +1,34 @@
+name: Check for repro
+on:
+  issues:
+    types: [opened, edited]
+  issue_comment:
+    types: [created, edited]
+
+jobs:
+  check-repro:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const body = github.event.issue.body || github.event.comment.body
+
+            if (!/https?:\/\/((github\.com\/[^/]+\/[^/]+)|(snack\.expo\.io\/.+))/gm.test(body)) {
+              return
+            }
+
+            github.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['repro provided'],
+            })
+
+            github.issues.removeLabel({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              name: 'needs repro',
+            })
